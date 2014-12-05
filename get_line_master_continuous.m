@@ -3,14 +3,20 @@
 clc
 clear all
 close all
-s = serial('/dev/tty.usbserial-AD01SVA9');
+
+% Create a serial object.  Change the string to the port name on your
+% computer.
+s = serial('/dev/tty.usbserial-A601EW9I');
 s.BaudRate=19200;
 
 %% Read Data
 ROW = 480;   % previous value is 1000
 LINE = 65;
 
+%open the serial port.  If this line throws an error, you may need to chmod
+%your serial port.
 fopen(s);
+
 max_line = zeros(ROW,1);
 figure(1);
 h = plot(max_line(1:ROW),1:ROW);
